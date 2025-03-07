@@ -19,7 +19,7 @@ async function getGreeting(){
     return;
   }
   document.getElementById('displayGreeting').style.color='black' 
-const response = await fetch(`http://localhost:3001/api/greet?name=${encodeURIComponent(name)}`);
+const response = await fetch(`https://younglabs-innovation-kappa.vercel.app/api/greet?name=${encodeURIComponent(name)}`);
 const data = await response.json();
 document.getElementById('displayGreeting').innerHTML = data.message;
 }

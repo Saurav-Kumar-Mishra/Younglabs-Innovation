@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  <title>Greeting API</title>
+</head>
+
+    <label for="name">Enter you name: </label>
+    <input type="text" id="name" name="name"  >
+    <input type="button" value="Get Greeting" onclick="getGreeting()"/>
+    <br><br>
+    <div id="displayGreeting"></div>
+
+  <script>
+
+async function getGreeting(){
+  const name = document.getElementById('name').value;
+  if(!name){
+    document.getElementById('displayGreeting').style.color='red'
+    document.getElementById('displayGreeting').innerHTML = "name is required!!!";
+    return;
+  }
+  document.getElementById('displayGreeting').style.color='black' 
+const response = await fetch(`http://localhost:3001/api/greet?name=${encodeURIComponent(name)}`);
+const data = await response.json();
+document.getElementById('displayGreeting').innerHTML = data.message;
+}
+  </script>
+</body>
+</html>
